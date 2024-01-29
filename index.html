@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="boklaasse.com v0.2" name="description"/>
+    <meta content="Bo Klaasse" name="author"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>boklaasse.com v0.2</title>
+    <!-- TODO: import normalize in a different way -->
+        <link rel="stylesheet" href="normalize.css" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="header.css" />
+        <link rel="stylesheet" href="style_landing.css" />
+    <!--<link rel="stylesheet" href="style_expander.css" />-->
+
+    <!-- get a nice font from Google -->
+    <!--    <link rel="preconnect" href="https://fonts.googleapis.com">-->
+    <!--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
+    <!--    <link-->
+    <!--        href="https://fonts.googleapis.com/css2?family=Catamaran:wght@300;400;700&family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"-->
+    <!--        rel="stylesheet">-->
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <nav>
+            <div class="nav-home">
+                <a href="index.html">Placeholder</a>
+            </div>
+            <div class="menu-container" id="menu-container">
+                <div class="menu-button-container">
+                    <button class="menu-button" id="menu-button" type="button">
+                        Toggle menu
+                    </button>
+                </div>
+                <div class="menu" id="menu">
+                    <ul class="menu-list">
+                        <li><a href="#">Topic I</a></li>
+                        <li><a href="index.html">Topic II</a></li>
+                        <li><a href="#">Topic III</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nav-contact" id="nav-contact">
+                <a href='index.html'>Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="cover">
+        <div class="cover-text">
+            <h1>H1 placeholder.</h1>
+            <h2>H2 placeholder. </h2>
+        </div>
+    </div>
+    <main>
+
+
+        <section class="section-blocks">
+            <div class="main-blocks">
+                <a href="#">
+                    <div class="main-blocks-single" id="block1">
+                        <h3>Diensten</h3>
+                        <p>Check onze diensten op het gebied van Data Science, Data Analytics en AI.</p>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="main-blocks-single" id="block2">
+                        <h3>Cases</h3>
+                        <p>Neem een kijkje in ons portfolio.</p>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="main-blocks-single" id="block3">
+                        <h3>Blog</h3>
+                        <p>Lees hier over onderwerpen die wij gaaf vinden.</p>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="main-blocks-single" id="block4">
+                        <h3>Over ons</h3>
+                        <p>Wie wij zijn en wat onze visie is.</p>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="main-blocks-single" id="block5">
+                        <h3>Contact</h3>
+                        <p>Kom in contact met ons om te kijken wat wij voor jou kunnen betekenen.</p>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="main-blocks-single" id="block6">
+                        <h3>Werken bij</h3>
+                        <p>Join ons team van Data Scientists!</p>
+
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+
+
+        <div class="footer-block-left">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Diensten</a></li>
+                <li><a href="#">Cases</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-block-right">
+            <ul>
+                <li><a href="#">Over ons</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Werken bij</a></li>
+                <li><a href="#">boklaasse.nl</a></li>
+            </ul>
+        </div>
+        <div class="footer-block-note">
+            <p>Version 0.1 </p>
+            <p>&copy; 2021 Bo Klaasse
+            </p>
+
+        </div>
+    </footer>
+</div>
+<!-- TODO: Study JS-->
+<!-- JS to toggle menu -->
+<script type="text/javascript">
+    (function () {
+        var button = document.getElementById('menu-button');
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            var menu = document.getElementById('menu-container');
+            menu.classList.toggle('is-open');
+        });
+    })();
+</script>
+</body>
+
+</html>
