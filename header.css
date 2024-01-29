@@ -1,0 +1,224 @@
+/* #BM HEADER AND NAV */
+
+nav {
+  grid-area: grid-nav;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: fit-content fit-content;
+  grid-template-areas: "grid-home grid-home" "grid-menu grid-contact";
+}
+
+/* #BM RESETS */
+
+/* reset default padding */
+nav ul {
+  padding: 0;
+}
+
+/* #BM GLOBAL */
+
+nav a:hover {
+  color: var(--accent-color);
+}
+
+/* #BM NAV.HOME */
+
+.nav-home {
+  grid-area: grid-home;
+  display: flex;
+  align-items: center;
+}
+
+.nav-home a {
+  flex: 1;
+  font-weight: bold;
+  font-size: 1.25em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1.25em 0 0.75em 0;
+}
+
+/* #BM NAV.CONTACT */
+
+.nav-contact {
+  grid-area: grid-contact;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-contact a {
+  cursor: pointer;
+  border: 1px solid var(--light);
+  padding: 0.5em 1.5em;
+  margin: 0.75em 0;
+  color: var(--text-color);
+}
+
+.nav-contact a:hover {
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* #BM NAV.DROPDOWN-MENU */
+
+/* #BM> NAV.DROPDOWN-MENU >> CONTAINER */
+
+.menu-container {
+  /* position relative to allow position absolute of `menu` */
+  display: block;
+  grid-area: grid-menu;
+  position: relative;
+}
+
+/* extra container to fix centering of button problem */
+.menu-button-container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.menu-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  flex: 1;
+  padding: 0;
+}
+
+/* Only hover on hover-enables devices */
+@media (hover: hover) {
+  .menu-button:hover {
+    color: var(--accent-color);
+  }
+}
+
+/* #BM> NAV.DROPDOWN-MENU >> ITEMS */
+
+.menu {
+  /* position absolute so it does not move around */
+  /* absolute positions it in relation to its closest positioned ancestor point */
+  display: none;
+  position: absolute;
+  width: 100%;
+  background-color: var(--theme-color-less-transparent);
+}
+
+/* TODO: Figure out how this works (link: JS in HTML file) */
+/* show/hide menu when button is pressed - see JS in HTML */
+.menu-container.is-open .menu {
+  display: block;
+}
+
+.menu-list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-list li {
+  line-height: 3;
+  width: 100%;
+  display: flex;
+}
+
+.menu ul li a {
+  width: 100%;
+  text-align: center;
+}
+
+/* prevent the height of the items increasing due to hover-border */
+.menu-list a {
+  border: 2px solid transparent;
+}
+
+.menu-list a:hover {
+  background-color: var(--accent-color);
+  color: var(--dark);
+  border: 2px solid var(--theme-color);
+}
+
+/* #BM- NAV.RESPONSIVE-ADJUSTMENT 42 REM */
+
+@media screen and (min-width: 42rem) {
+  nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    grid-template-areas: "grid-home grid-contact" "grid-menu grid-menu";
+  }
+
+  .nav-home a {
+    padding: 1.25em 0;
+  }
+
+  .menu-button-container {
+    display: none;
+  }
+
+  /* force-display menu to get overlap with cover image below */
+  .menu {
+    display: block;
+  }
+
+  .menu-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* #BM- NAV.RESPONSIVE-ADJUSTMENT 64 REM */
+
+@media screen and (min-width: 64rem) {
+  nav {
+    display: grid;
+    grid-template-columns: [home-start] 10rem [menu-start] auto [contact-start] 10rem;
+    grid-template-areas: "grid-home grid-menu grid-contact";
+  }
+
+  /* remove the background from earlier */
+  .menu {
+    background-color: transparent;
+  }
+
+  .menu-container {
+    grid-area: grid-menu;
+  }
+
+  .nav-home a {
+    margin: 0.5em 0;
+    padding: 0.75em 0.5em;
+    font-size: 1rem;
+    border-right: 3px solid var(--light);
+  }
+
+  .menu {
+    height: 100%;
+  }
+
+  .menu-list a:hover {
+    background-color: inherit;
+    color: var(--accent-color);
+    transform: scale(1.05);
+  }
+
+  .menu ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .menu ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .menu ul li a {
+    flex: 1;
+  }
+}

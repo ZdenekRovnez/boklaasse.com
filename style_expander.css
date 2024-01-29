@@ -1,0 +1,178 @@
+/* after >= 480px */
+@media screen and (min-width: 30rem) {
+  .main-blocks {
+    column-gap: 0.5em;
+    grid: repeat(3, 1fr) / repeat(2, 1fr);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+/* after >= 640px */
+@media screen and (min-width: 40rem) {
+  main,
+  footer {
+    padding: 0 10%;
+  }
+}
+
+/* after >= 800px */
+@media screen and (min-width: 50rem) {
+  .container {
+    display: grid;
+    grid-template-rows: [nav-start] 5rem [cover-start] 40rem [main-start] auto [footer-start] 12rem;
+    grid-template-columns:
+      [left-start] 11rem [middle-start] auto
+      [right-start] 11rem;
+    grid-template-areas: "grid-nav grid-nav grid-nav" "grid-cover grid-cover grid-cover" "grid-main grid-main grid-main" "grid-footer grid-footer grid-footer";
+  }
+
+  header {
+    grid-area: grid-nav;
+  }
+
+  nav {
+    display: grid;
+    grid-template-columns: [home-start] 11rem [menu-start] auto [contact-start] 11rem;
+    grid-template-rows: 5rem;
+    grid-template-areas: "grid-home grid-nav-menu grid-contact";
+  }
+
+  .nav-home a {
+    border-right: 3px solid var(--light);
+    line-height: 2rem;
+  }
+
+  .menu {
+    grid-area: grid-nav-menu;
+  }
+
+  .menu ul li a {
+    line-height: 5rem;
+  }
+
+  .main-blocks {
+    grid: repeat(2, 1fr) / repeat(3, 1fr);
+  }
+
+  .main-blocks-single {
+    height: 9rem;
+  }
+
+  .main-blocks-single h3 {
+    line-height: 9rem;
+  }
+
+  .main-blocks {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+/* after >= 1040px */
+@media screen and (min-width: 65rem) {
+  .container {
+    grid-template-columns: [left-start] minmax(11rem, 1fr) [middle-start] 43rem [right-start] minmax(
+        11rem,
+        1fr
+      );
+    grid-template-areas: "grid-nav grid-nav grid-nav" "grid-cover grid-cover grid-cover" "grid-main-left grid-main grid-main-right" "grid-footer grid-footer grid-footer";
+  }
+
+  nav {
+    grid-template-columns: [home-start] minmax(11rem, 1fr) [menu-start] 43rem [contact-start] minmax(
+        11rem,
+        1fr
+      );
+  }
+  .nav-home {
+    justify-content: flex-end;
+  }
+
+  .nav-home a {
+    max-width: 11rem;
+  }
+
+  .nav-contact {
+    /* (176 - 101.317)/2 = 37.3415 and 37.3415 / 16 = 2.33384375 */
+    justify-content: flex-start;
+    padding: 0 2.33rem;
+  }
+
+  .main-blocks {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  main,
+  footer {
+    padding: 0px;
+  }
+
+  footer {
+    grid-template-columns: minmax(11rem, 1fr) 21.5rem 21.5rem minmax(11rem, 1fr);
+    grid-template-areas: "grid-footer-left-lost grid-footer-left grid-footer-right grid-footer-right-lost" "grid-footer-note grid-footer-note grid-footer-note grid-footer-note";
+  }
+
+  .footer-block-left {
+    grid-area: grid-footer-left;
+  }
+
+  .footer-block-right {
+    grid-area: grid-footer-right;
+  }
+}
+
+/* after >=  */
+@media screen and (min-width: 75rem) {
+  .container {
+    grid-template-columns: [left-start] minmax(11rem, 1fr) [middle-start] 60rem [right-start] minmax(
+        11rem,
+        1fr
+      );
+    grid-template-areas: "grid-nav grid-nav grid-nav" "grid-cover grid-cover grid-cover" "grid-main-left grid-main grid-main-right" "grid-footer grid-footer grid-footer";
+  }
+
+  nav {
+    grid-template-columns: [home-start] minmax(11rem, 1fr) [menu-start] 60rem [contact-start] minmax(
+        11rem,
+        1fr
+      );
+  }
+  .nav-home {
+    justify-content: flex-end;
+  }
+
+  .nav-home a {
+    max-width: 11rem;
+  }
+
+  .nav-contact {
+    /* (176 - 101.317)/2 = 37.3415 and 37.3415 / 16 = 2.33384375 */
+    justify-content: flex-start;
+    padding: 0 2.33rem;
+  }
+
+  .main-blocks {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  main,
+  footer {
+    padding: 0px;
+  }
+
+  footer {
+    grid-template-columns: minmax(11rem, 1fr) 30rem 30rem minmax(11rem, 1fr);
+    grid-template-areas: "grid-footer-left-lost grid-footer-left grid-footer-right grid-footer-right-lost" "grid-footer-note grid-footer-note grid-footer-note grid-footer-note";
+  }
+
+  .footer-block-left {
+    grid-area: grid-footer-left;
+  }
+
+  .footer-block-right {
+    grid-area: grid-footer-right;
+  }
+}
