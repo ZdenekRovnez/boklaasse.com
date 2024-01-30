@@ -9,18 +9,18 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>boklaasse.com v0.2</title>
     <!-- TODO: import normalize in a different way -->
-        <link rel="stylesheet" href="normalize.css" />
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="header.css" />
-        <link rel="stylesheet" href="style_landing.css" />
+    <link href="normalize.css" rel="stylesheet"/>
+    <link href="style.css" rel="stylesheet"/>
+    <link href="header.css" rel="stylesheet"/>
+    <link href="style_landing.css" rel="stylesheet"/>
     <!--<link rel="stylesheet" href="style_expander.css" />-->
 
     <!-- get a nice font from Google -->
-    <!--    <link rel="preconnect" href="https://fonts.googleapis.com">-->
-    <!--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
-    <!--    <link-->
-    <!--        href="https://fonts.googleapis.com/css2?family=Catamaran:wght@300;400;700&family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"-->
-    <!--        rel="stylesheet">-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Catamaran:wght@300;400;700&family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+            rel="stylesheet">
 </head>
 
 <body>
@@ -45,11 +45,41 @@
                     </ul>
                 </div>
             </div>
-            <div class="nav-contact" id="nav-contact">
-                <a href='index.html'>Contact</a>
-            </div>
+                <div class="nav-contact" id="nav-contact">
+                    <button type="button" id="nav-contact-open">
+                        <p>Control panel</p>
+                    </button>
+                </div>
         </nav>
     </header>
+            <div class="contact-modal" id="contact-modal">
+            <div class="contact-modal-backdrop"></div>
+            <div class="contact-modal-body">
+                <form id="form-customize">
+                    <fieldset>
+                        <legend>Customize theme</legend>
+                        <ul>
+                            <li>
+                                <label for="form-customize-text-color">Text color:</label>
+                                <input type="color" name="custom-text-color" id="form-customize-text-color"
+                                    value="#eeeeee">
+                            </li>
+                            <li>
+                                <label for="form-customize-accent-color">Accent color:</label>
+                                <input type="color" name="custom-accent-color" id="form-customize-accent-color"
+                                    value="#e9c46a">
+                            </li>
+                        </ul>
+                        <input type="button" id="form-customize-apply-button" value="Apply changes"
+                            onclick="changeColor()">
+                        <!-- TODO: include the other colors -->
+                        <!-- TODO: see if default value can be read from stylesheets (jQuery?) -->
+                    </fieldset>
+                </form>
+                <!-- TODO: make this button nice (CSS in Depth, page 183)-->
+                <button class="contact-modal-close" id="contact-modal-close" accesskey="q">Quit</button>
+            </div>
+        </div>
 
     <div class="cover">
         <div class="cover-text">
@@ -142,6 +172,50 @@
             menu.classList.toggle('is-open');
         });
     })();
+</script>
+<script>
+    var r = document.querySelector(':root');
+    var textColor = localStorage.getItem("customTextColor");
+    var accentColor = localStorage.getItem("customAccentColor");
+    r.style.setProperty('--text-color', textColor);
+    r.style.setProperty('--accent-color', accentColor);
+</script>
+<!-- * JS for toggling menu -->
+<script type="text/javascript">
+    (function () {
+        var button = document.getElementById('menu-button');
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            var menu = document.getElementById('menu-container');
+            menu.classList.toggle('is-open');
+        });
+    })();
+</script>
+<!-- * JS for toggling contact modal -->
+<script type="text/javascript">
+    var buttonOpen = document.getElementById('nav-contact-open');
+    var buttonClose = document.getElementById('contact-modal-close');
+    var modal = document.getElementById('contact-modal');
+    buttonOpen.addEventListener('click', function (event) {
+        event.preventDefault();
+        modal.style.display = 'block';
+    });
+    buttonClose.addEventListener('click', function (event) {
+        event.preventDefault();
+        modal.style.display = 'none';
+    });
+</script>
+<!-- * JS for changing colors (via form) -->
+<script>
+    function changeColor() {
+        var r = document.querySelector(':root');
+        let textColor = document.getElementById('form-customize-text-color').value;
+        let accentColor = document.getElementById('form-customize-accent-color').value;
+        r.style.setProperty('--text-color', textColor);
+        r.style.setProperty('--accent-color', accentColor);
+        localStorage.setItem("customTextColor", textColor);
+        localStorage.setItem("customAccentColor", accentColor);
+    }
 </script>
 </body>
 
